@@ -28,6 +28,11 @@ public class InteractiveFiction {
 		while (true) {
 			// Print the description of where you are.
 			Place here = game.getPlace(place);
+			if (here.hasVisited()==true) {
+				System.out.println("This looks familiar...");
+			}
+			here.visit(); 
+			
 			
 			System.out.println();
 			System.out.println("... --- ...");
@@ -63,8 +68,22 @@ public class InteractiveFiction {
 				} else {
 					continue;
 				}
+			if (action.equals("escape")) {
+					if (input.confirm("Are you sure you want to quit?")) {
+						return place;
+					} else {
+						continue;
+					}
 			}
-
+			if (action.equals("q")) {
+					if (input.confirm("Are you sure you want to quit?")) {
+						return place;
+					} else {
+						continue;
+					}
+			if (action.equals("help")) {
+				System.out.println("Please enter a number between 0,1,2 or enter \"quit\" to quit");
+						}
 			// From here on out, what they typed better be a number!
 			Integer exitNum = null;
 			try {
